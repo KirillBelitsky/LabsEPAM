@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class RectangleServiceImpl implements RectangleService {
 
     @Override
-    @ResponseBody
     public boolean validate(String length, String width) {
 
         if (length.trim().length() == 0 || width.trim().length() == 0)

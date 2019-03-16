@@ -13,7 +13,6 @@ import static org.mockito.Mockito.when;
 @WebMvcTest
 public class RectangleServiceImplTest {
 
-
     @MockBean
     private RectangleService rectangleService;
 

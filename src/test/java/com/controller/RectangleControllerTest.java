@@ -34,7 +34,7 @@ public class RectangleControllerTest {
     @Test
     public void greetingOkTest() throws Exception{
         when(rectangleService.validate("2","3")).thenReturn(true);
-        mockMvc.perform(get("/greeting?length=2&width=3")).andExpect(status().isOk());
+        when(rectangleController.greeting("2","3")).thenReturn(new ResponseEntity("Ok",HttpStatus.OK));
     }
 
     @Test

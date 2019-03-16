@@ -9,3 +9,12 @@
 2019-03-16 10:49:14 DEBUG RectangleController:28 - Start method greeting!
 2019-03-16 10:49:14 DEBUG RectangleController:31 - Validation is succefully!
 2019-03-16 10:49:14 DEBUG RectangleController:41 - Good Job!
+2019-03-16 10:56:55 DEBUG RectangleController:28 - Start method greeting!
+2019-03-16 10:56:55 DEBUG RectangleController:31 - Validation is succefully!
+2019-03-16 10:56:55 DEBUG RectangleController:41 - Good Job!
+2019-03-16 10:57:27 DEBUG RectangleController:28 - Start method greeting!
+2019-03-16 10:57:27 DEBUG RectangleController:31 - Validation is succefully!
+2019-03-16 10:57:27 DEBUG RectangleController:41 - Good Job!
+2019-03-16 10:57:45 DEBUG RectangleController:28 - Start method greeting!
+2019-03-16 10:57:45 DEBUG RectangleController:31 - Validation is succefully!
+2019-03-16 10:57:45 ERROR RectangleController:34 - 500 Error!
