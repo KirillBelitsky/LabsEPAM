@@ -1,5 +1,6 @@
 package com.cache;
 
+import com.entity.Parameters;
 import com.entity.Rectangle;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -11,25 +12,25 @@ import java.util.Set;
 @Component
 public class Cache {
 
-    private HashMap<String, Rectangle> map;
+    private HashMap<Parameters, Rectangle> map;
 
     public Cache(){
         map = new HashMap<>();
     }
 
-    public void put(String key,Rectangle rectangle){
+    public void put(Parameters key,Rectangle rectangle){
         map.put(key, rectangle);
     }
 
-    public Rectangle get(String key){
+    public Rectangle get(Parameters key){
         return map.get(key);
     }
 
-    public boolean containKey(String key){
+    public boolean containKey(Parameters key){
         if(map.size() == 0)
             return false;
 
-        Set<String> keys = map.keySet();
+        Set<Parameters> keys = map.keySet();
         return keys.contains(key);
     }
 }
