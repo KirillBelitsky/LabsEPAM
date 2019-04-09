@@ -1,9 +1,8 @@
 package com.controller;
 
 import com.entity.Rectangle;
-import com.errorPages.BadRequestError;
 import com.errorPages.InternalServerError;
-import com.service.RectangleService;
+import com.service.rectangle.RectangleService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -24,27 +23,27 @@ public class RectangleController {
 
     @RequestMapping("/rectangle")
     public ResponseEntity<Rectangle> greeting(@RequestParam(value = "length") String length,
-                                              @RequestParam(value = "width") String width) {
+                                               @RequestParam(value = "width") String width) {
 
-        log.debug("Start method greeting!");
+        //log.debug("Start method greeting!");
 
         if (rectangleService.validate(length, width)) {
-            log.debug("Validation is succefully!");
+            //log.debug("Validation is succefully!");
 
             if(Integer.parseInt(length) == 999 ||Integer.parseInt(width)==999) {
-                log.error("500 Error!");
+                //log.error("500 Error!");
                 throw new InternalServerError();
             }
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("Responded", "RectangleController");
 
-            log.debug("Good Job!");
+            //log.debug("Good Job!");
 
             return ResponseEntity.accepted().headers(headers).body(rectangleService.process(length,width));
         }
 
-        log.error("Bad Request!");
+        //log.error("Bad Request!");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
 }

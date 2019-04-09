@@ -1,6 +1,7 @@
 package com.service;
 
 import com.entity.Rectangle;
+import com.service.rectangle.RectangleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

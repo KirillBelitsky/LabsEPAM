@@ -1,4 +1,4 @@
-package com.service;
+package com.service.rectangle;
 
 import com.entity.Rectangle;
 

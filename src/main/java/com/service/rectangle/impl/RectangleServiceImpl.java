@@ -1,22 +1,25 @@
-package com.service.impl;
+package com.service.rectangle.impl;
 
 import com.cache.Cache;
 import com.entity.Parameters;
-import com.errorPages.BadRequestError;
 import com.entity.Rectangle;
-import com.service.RectangleService;
+import com.service.counter.CounterService;
+import com.service.rectangle.RectangleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.apache.log4j.Logger;
 
 @Service
 public class RectangleServiceImpl implements RectangleService {
 
+    private static final Logger logger = Logger.getLogger(RectangleServiceImpl.class);
     private Cache cache;
+    private CounterService counterService;
 
     @Autowired
-    public RectangleServiceImpl(Cache cache){
+    public RectangleServiceImpl(Cache cache,CounterService counterService){
         this.cache = cache;
+        this.counterService = counterService;
     }
 
     @Override
@@ -35,7 +38,10 @@ public class RectangleServiceImpl implements RectangleService {
     }
 
     @Override
-    public Rectangle process(String length, String width) {
+    public synchronized Rectangle process(String length, String width) {
+
+        counterService.increment();
+        logger.debug("This service was used " + counterService.getCounter());
 
         Parameters parameters = new Parameters(length,width);
 
