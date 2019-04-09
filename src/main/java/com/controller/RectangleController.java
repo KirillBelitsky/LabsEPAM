@@ -22,7 +22,7 @@ public class RectangleController {
     }
 
     @RequestMapping("/rectangle")
-    public ResponseEntity<Rectangle> greeting(@RequestParam(value = "length") String length,
+    public ResponseEntity<Rectangle> rectangle(@RequestParam(value = "length") String length,
                                                @RequestParam(value = "width") String width) {
 
         //log.debug("Start method greeting!");
