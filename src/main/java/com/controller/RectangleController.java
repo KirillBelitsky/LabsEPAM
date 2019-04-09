@@ -22,9 +22,10 @@ public class RectangleController {
         this.rectangleService = rectangleService;
     }
 
-    @RequestMapping("/greeting")
+    @RequestMapping("/rectangle")
     public ResponseEntity<Rectangle> greeting(@RequestParam(value = "length") String length,
                                               @RequestParam(value = "width") String width) {
+
         log.debug("Start method greeting!");
 
         if (rectangleService.validate(length, width)) {

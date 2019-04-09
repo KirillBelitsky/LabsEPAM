@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="LabsEPAM" options="-parameters" />
+      <module name="LabsEPAM" options="" />
     </option>
   </component>
 </project>

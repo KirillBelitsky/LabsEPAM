@@ -1,4 +1,4 @@
-package com.hello;
+package com.controller;
 
 import com.controller.RectangleController;
 import com.errorPages.InternalServerError;
