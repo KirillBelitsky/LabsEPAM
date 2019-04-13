@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.entity.Parameters;
 import com.entity.Rectangle;
 import com.errorPages.InternalServerError;
 import com.service.rectangle.RectangleService;
@@ -9,6 +10,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class RectangleController {
@@ -21,7 +25,7 @@ public class RectangleController {
         this.rectangleService = rectangleService;
     }
 
-    @RequestMapping("/rectangle")
+    @GetMapping("/rectangle")
     public ResponseEntity<Rectangle> rectangle(@RequestParam(value = "length") String length,
                                                @RequestParam(value = "width") String width) {
 
@@ -45,5 +49,10 @@ public class RectangleController {
 
         //log.error("Bad Request!");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+    }
+
+    @PostMapping
+    public List<Rectangle> rectangle(@RequestBody List<Parameters> list){
+        return rectangleService.processList(list);
     }
 }

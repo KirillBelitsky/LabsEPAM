@@ -9,6 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 @Service
 public class RectangleServiceImpl implements RectangleService {
 
@@ -54,10 +59,23 @@ public class RectangleServiceImpl implements RectangleService {
         Rectangle rectangle = new Rectangle(String.valueOf(squre),String.valueOf(perimetr));
         cache.put(parameters,rectangle);
 
-        if(length.contains("3"))
-            System.out.println("ky");
-
         return rectangle;
+    }
+
+    @Override
+    public List<Rectangle> processList(List<Parameters> list) {
+
+        return list.stream().filter(value -> {
+            int length = Integer.parseInt(value.getLength());
+            int width = Integer.parseInt(value.getWidth());
+
+            return width > 0 && length > 0;
+        }).map(value ->{
+            int perimeter = 2*(Integer.parseInt(value.getWidth()) + Integer.parseInt(value.getLength()));
+            int square = Integer.parseInt(value.getLength()) * Integer.parseInt(value.getWidth());
+
+            return new Rectangle(String.valueOf(square),String.valueOf(perimeter));
+        }).collect(Collectors.toList());
     }
 
 }

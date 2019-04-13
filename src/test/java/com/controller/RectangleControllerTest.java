@@ -30,18 +30,18 @@ public class RectangleControllerTest {
     @Test
     public void greetingOkTest() throws Exception{
         when(rectangleService.validate("2","3")).thenReturn(true);
-        when(rectangleController.greeting("2","3")).thenReturn(new ResponseEntity("Ok",HttpStatus.OK));
+        when(rectangleController.rectangle("2","3")).thenReturn(new ResponseEntity("Ok",HttpStatus.OK));
     }
 
     @Test
     public void greetingBadRequestTest() throws Exception{
         when(rectangleService.validate("-2","2")).thenReturn(false);
-        when(rectangleController.greeting("-2","2")).thenReturn(new ResponseEntity("Bad_Request", HttpStatus.BAD_REQUEST));
+        when(rectangleController.rectangle("-2","2")).thenReturn(new ResponseEntity("Bad_Request", HttpStatus.BAD_REQUEST));
     }
 
     @Test
     public void greetingIntServErrorTest(){
         when(rectangleService.validate("999","2")).thenReturn(true);
-        when(rectangleController.greeting("999","2")).thenReturn(new ResponseEntity("Bad_Request", HttpStatus.INTERNAL_SERVER_ERROR));
+        when(rectangleController.rectangle("999","2")).thenReturn(new ResponseEntity("Bad_Request", HttpStatus.INTERNAL_SERVER_ERROR));
     }
 }

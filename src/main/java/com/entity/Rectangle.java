@@ -14,7 +14,15 @@ public class Rectangle {
         return square;
     }
 
+    public void setSquare(String square) {
+        this.square = square;
+    }
+
     public String getPerimeter() {
         return perimeter;
+    }
+
+    public void setPerimeter(String perimeter) {
+        this.perimeter = perimeter;
     }
 }
