@@ -1,7 +1,6 @@
 package com.controller;
 
-import com.entity.Parameters;
-import com.entity.Rectangle;
+import com.entity.*;
 import com.errorPages.InternalServerError;
 import com.service.rectangle.RectangleService;
 import org.apache.log4j.Logger;
@@ -11,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,30 +27,32 @@ public class RectangleController {
     public ResponseEntity<Rectangle> rectangle(@RequestParam(value = "length") String length,
                                                @RequestParam(value = "width") String width) {
 
-        //log.debug("Start method greeting!");
-
-        if (rectangleService.validate(length, width)) {
-            //log.debug("Validation is succefully!");
-
-            if(Integer.parseInt(length) == 999 ||Integer.parseInt(width)==999) {
-                //log.error("500 Error!");
+        if (rectangleService.validate(length, width)){
+            if(Integer.parseInt(length) == 999 ||Integer.parseInt(width)==999){
                 throw new InternalServerError();
             }
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("Responded", "RectangleController");
 
-            //log.debug("Good Job!");
-
             return ResponseEntity.accepted().headers(headers).body(rectangleService.process(length,width));
         }
 
-        //log.error("Bad Request!");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
 
     @PostMapping
     public List<Rectangle> rectangle(@RequestBody List<Parameters> list){
         return rectangleService.processList(list);
+    }
+
+    @PostMapping("/statistic")
+    public ResultStatistic statistic(@RequestBody List<Parameters> list){
+        return rectangleService.calculateStatistic(list);
+    }
+
+    @GetMapping("/getAll")
+    public List<CacheResult> getAll(){
+        return rectangleService.getAll();
     }
 }

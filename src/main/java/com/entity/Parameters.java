@@ -1,15 +1,27 @@
 package com.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
 public class Parameters {
+
+    private int id;
     private String length;
     private String width;
-
-    public Parameters() {
-    }
+    private Rectangle rectangleId;
 
     public Parameters(String length, String width) {
         this.length = length;
         this.width = width;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLength() {
@@ -26,6 +38,14 @@ public class Parameters {
 
     public void setWidth(String width) {
         this.width = width;
+    }
+
+    public Rectangle getRectangleId() {
+        return rectangleId;
+    }
+
+    public void setRectangleId(Rectangle rectangleId) {
+        this.rectangleId = rectangleId;
     }
 
     @Override

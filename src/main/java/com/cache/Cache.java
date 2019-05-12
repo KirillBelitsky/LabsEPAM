@@ -33,4 +33,12 @@ public class Cache {
         Set<Parameters> keys = map.keySet();
         return keys.contains(key);
     }
+
+    public Set<Map.Entry<Parameters, Rectangle>> getEntrySet(){
+        return map.entrySet();
+    }
+
+    public boolean isEmpty(){
+        return map.isEmpty();
+    }
 }
