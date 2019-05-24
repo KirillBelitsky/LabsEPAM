@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CacheRepository extends JpaRepository<CacheResult,Integer> {
     List<CacheResult> findAll();
+    List<CacheResult> getAllByResponceId(int id);
 }

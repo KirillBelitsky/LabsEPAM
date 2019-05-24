@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class RectangleController {
@@ -41,18 +42,20 @@ public class RectangleController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
 
-    @PostMapping
-    public List<Rectangle> rectangle(@RequestBody List<Parameters> list){
-        return rectangleService.processList(list);
-    }
 
-    @PostMapping("/statistic")
-    public ResultStatistic statistic(@RequestBody List<Parameters> list){
-        return rectangleService.calculateStatistic(list);
-    }
-
-    @GetMapping("/getAll")
+    @GetMapping("/all")
     public List<CacheResult> getAll(){
         return rectangleService.getAll();
     }
+
+    @PostMapping("/rectangle/async")
+    public ResponseEntity<String> processListAsync(@RequestBody List<Parameters> list){
+        return ResponseEntity.ok().body(rectangleService.asynchCalculate(list).toString());
+    }
+
+    @GetMapping("/get/async/{id}")
+    public List<Rectangle> getAsyncrAnswers(@PathVariable("id") String id){
+        return rectangleService.getAnswerById(id);
+    }
+
 }

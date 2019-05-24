@@ -11,6 +11,9 @@ import org.apache.log4j.Logger;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,21 +23,21 @@ public class RectangleServiceImpl implements RectangleService {
     private Cache cache;
     private CounterService counterService;
     private CacheRepository cacheRepository;
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     @PostConstruct
-    void init(){
+    void init() {
+        cacheRepository.findAll().forEach(value -> {
+            Parameters parameters = new Parameters(value.getLength(), value.getWidth());
+            Rectangle rectangle = new Rectangle(value.getSquare(), value.getPerimeter());
 
-        cacheRepository.findAll().forEach(value->{
-            Parameters parameters = new Parameters(value.getLength(),value.getWidth());
-            Rectangle rectangle = new Rectangle(value.getSquare(),value.getPerimeter());
-
-            cache.put(parameters,rectangle);
+            cache.put(parameters, rectangle);
             logger.info("Add " + rectangle.toString() + "at cache!");
         });
     }
 
     @Autowired
-    public RectangleServiceImpl(Cache cache, CounterService counterService,CacheRepository cacheRepository) {
+    public RectangleServiceImpl(Cache cache, CounterService counterService, CacheRepository cacheRepository) {
         this.cache = cache;
         this.counterService = counterService;
         this.cacheRepository = cacheRepository;
@@ -75,46 +78,10 @@ public class RectangleServiceImpl implements RectangleService {
         return rectangle;
     }
 
-    @Override
-    public List<Rectangle> processList(List<Parameters> list) {
-
-        return list.stream().filter(value -> {
-            int length = Integer.parseInt(value.getLength());
-            int width = Integer.parseInt(value.getWidth());
-
-            return width > 0 && length > 0;
-        }).map(value -> {
-
-            logger.info("We are in stream map!");
-
-            if(cache.containKey(value)){
-                logger.info("Get result from cache " + cache.get(value).toString());
-                return cache.get(value);
-            }
-
-            CacheResult cacheResult = new CacheResult();
-
-            int perimeter = 2 * (Integer.parseInt(value.getWidth()) + Integer.parseInt(value.getLength()));
-            int square = Integer.parseInt(value.getLength()) * Integer.parseInt(value.getWidth());
-
-            Rectangle rectangle = new Rectangle(String.valueOf(square), String.valueOf(perimeter));
-
-            cacheResult.setLength(value.getLength());
-            cacheResult.setWidth(value.getWidth());
-            cacheResult.setPerimeter(rectangle.getPerimeter());
-            cacheResult.setSquare(rectangle.getSquare());
-
-            logger.info("Add result in cache!");
-
-            cacheRepository.save(cacheResult);
-            cache.put(new Parameters(value.getLength(),value.getWidth()),rectangle);
-
-            return rectangle;
-        }).collect(Collectors.toList());
-    }
 
     @Override
     public ResultStatistic calculateStatistic(List<Parameters> list) {
+
         Statistic statistic = new Statistic();
         List<Rectangle> resultList = this.processList(list);
 
@@ -135,26 +102,105 @@ public class RectangleServiceImpl implements RectangleService {
 
         statistic.setPopularResult(findMostPopularResult(resultList));
 
-
-        return new ResultStatistic(resultList,statistic);
+        return new ResultStatistic(resultList, statistic);
     }
 
-    private Rectangle findMostPopularResult(List<Rectangle> list){
-        HashMap<Rectangle,Integer> map = new HashMap<>();
+    private Rectangle findMostPopularResult(List<Rectangle> list) {
+        HashMap<Rectangle, Integer> map = new HashMap<>();
 
-        list.forEach(value->{
+        list.forEach(value -> {
             System.out.println(value.toString());
-            if(map.containsKey(value)){
-                map.replace(value,map.get(value) + 1);
-            }
-            else map.put(value,1);
+            if (map.containsKey(value)) {
+                map.replace(value, map.get(value) + 1);
+            } else map.put(value, 1);
         });
 
-        Rectangle answer = map.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue)).get().getKey();
-        return answer;
+        return map.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue)).get().getKey();
     }
 
-    public List<CacheResult> getAll(){
+    public List<CacheResult> getAll() {
         return cacheRepository.findAll();
+    }
+
+
+    @Override
+    public Integer asynchCalculate(List<Parameters> parameters) {
+        int id = new Random().nextInt(50000) + 1;
+
+        Future<List<Rectangle>> result = processList(parameters, id);
+
+        logger.info("Return id!");
+        return id;
+    }
+
+    @Override
+    public List<Rectangle> getAnswerById(String id) {
+        return cacheRepository.getAllByResponceId(Integer.parseInt(id))
+                .stream()
+                .map(value ->
+                        new Rectangle(value.getSquare(), value.getPerimeter()))
+                .collect(Collectors.toList());
+    }
+
+
+    private Future<List<Rectangle>> processList(List<Parameters> list, int id) {
+        logger.info("We are in future methods!");
+
+        return this.executor.submit(() ->
+                list.stream().filter(value -> {
+                    int length = Integer.parseInt(value.getLength());
+                    int width = Integer.parseInt(value.getWidth());
+
+                    return width > 0 && length > 0;
+                }).map(value -> {
+
+                    logger.info("We are in stream map!");
+
+                    if (cache.containKey(value)) {
+                        logger.info("Get result from cache " + cache.get(value).toString());
+                        return cache.get(value);
+                    }
+
+                    CacheResult cacheResult = new CacheResult();
+
+                    int perimeter = 2 * (Integer.parseInt(value.getWidth()) + Integer.parseInt(value.getLength()));
+                    int square = Integer.parseInt(value.getLength()) * Integer.parseInt(value.getWidth());
+
+                    cacheResult.setLength(value.getLength());
+                    cacheResult.setWidth(value.getWidth());
+                    cacheResult.setSquare(String.valueOf(square));
+                    cacheResult.setPerimeter(String.valueOf(perimeter));
+                    cacheResult.setResponceId(id);
+
+                    cacheRepository.save(cacheResult);
+
+                    logger.info("Future method finished!");
+
+
+                    return new Rectangle(String.valueOf(square), String.valueOf(perimeter));
+                }).collect(Collectors.toList())
+        );
+
+    }
+
+    private List<Rectangle> processList(List<Parameters> parameters) {
+        return parameters.stream()
+                .filter(value -> {
+                    int length = Integer.parseInt(value.getLength());
+                    int width = Integer.parseInt(value.getWidth());
+
+                    return width > 0 && length > 0;
+                }).map(this::processRectangleFromList).collect(Collectors.toList());
+    }
+
+    private Rectangle processRectangleFromList(Parameters parameters) {
+        if (cache.containKey(parameters)) {
+            return cache.get(parameters);
+        }
+
+        int perimeter = 2 * (Integer.parseInt(parameters.getWidth()) + Integer.parseInt(parameters.getLength()));
+        int square = Integer.parseInt(parameters.getLength()) * Integer.parseInt(parameters.getWidth());
+
+        return new Rectangle(String.valueOf(square), String.valueOf(perimeter));
     }
 }

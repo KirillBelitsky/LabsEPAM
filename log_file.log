@@ -1,16 +1,81 @@
-2019-05-11 10:40:56 INFO  RectangleServiceImpl:32 - Add Rectangle{square='14', perimeter='10'}at cache!
-2019-05-11 10:40:56 INFO  RectangleServiceImpl:32 - Add Rectangle{square='10', perimeter='4'}at cache!
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:88 - We are in stream map!
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:91 - Get result from cache Rectangle{square='14', perimeter='10'}
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:88 - We are in stream map!
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:91 - Get result from cache Rectangle{square='10', perimeter='4'}
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:88 - We are in stream map!
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:107 - Add result in cache!
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:88 - We are in stream map!
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:107 - Add result in cache!
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:88 - We are in stream map!
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:91 - Get result from cache Rectangle{square='14', perimeter='10'}
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:88 - We are in stream map!
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:91 - Get result from cache Rectangle{square='14', perimeter='10'}
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:88 - We are in stream map!
-2019-05-11 10:41:07 INFO  RectangleServiceImpl:91 - Get result from cache Rectangle{square='70', perimeter='34'}
+2019-05-23 10:46:40 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 10:46:40 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-23 10:47:34 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 10:47:34 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-23 10:48:17 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 10:48:17 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-23 10:49:55 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 10:49:55 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-23 10:51:34 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 10:51:34 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-23 11:05:52 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:05:52 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-23 11:06:53 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:06:53 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-23 11:08:00 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:08:00 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-23 11:08:01 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:08:01 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-23 11:08:01 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:08:01 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-23 11:09:09 INFO  RectangleServiceImpl:38 - Add Rectangle{square='1600', perimeter='200'}at cache!
+2019-05-23 11:09:09 INFO  RectangleServiceImpl:38 - Add Rectangle{square='50', perimeter='30'}at cache!
+2019-05-23 11:09:09 INFO  RectangleServiceImpl:38 - Add Rectangle{square='684', perimeter='170'}at cache!
+2019-05-23 11:09:14 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:09:14 INFO  RectangleServiceImpl:165 - Get result from cache Rectangle{square='1600', perimeter='200'}
+2019-05-23 11:09:14 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:09:14 INFO  RectangleServiceImpl:165 - Get result from cache Rectangle{square='50', perimeter='30'}
+2019-05-23 11:09:14 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:09:14 INFO  RectangleServiceImpl:165 - Get result from cache Rectangle{square='684', perimeter='170'}
+2019-05-23 11:10:29 INFO  RectangleServiceImpl:38 - Add Rectangle{square='1600', perimeter='200'}at cache!
+2019-05-23 11:10:29 INFO  RectangleServiceImpl:38 - Add Rectangle{square='50', perimeter='30'}at cache!
+2019-05-23 11:10:29 INFO  RectangleServiceImpl:38 - Add Rectangle{square='684', perimeter='170'}at cache!
+2019-05-23 11:10:35 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:10:35 INFO  RectangleServiceImpl:165 - Get result from cache Rectangle{square='1600', perimeter='200'}
+2019-05-23 11:10:35 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:10:35 INFO  RectangleServiceImpl:165 - Get result from cache Rectangle{square='50', perimeter='30'}
+2019-05-23 11:10:35 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:10:35 INFO  RectangleServiceImpl:165 - Get result from cache Rectangle{square='684', perimeter='170'}
+2019-05-23 11:11:15 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:11:15 INFO  RectangleServiceImpl:183 - Add result in cache!
+2019-05-23 11:11:15 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:11:15 INFO  RectangleServiceImpl:183 - Add result in cache!
+2019-05-23 11:11:16 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:11:16 INFO  RectangleServiceImpl:183 - Add result in cache!
+2019-05-23 11:13:04 INFO  RectangleServiceImpl:162 - We are in stream map!
+2019-05-23 11:13:04 INFO  RectangleServiceImpl:181 - Add result in cache!
+2019-05-25 00:00:12 INFO  RectangleServiceImpl:154 - We are in future methods!
+2019-05-25 00:00:12 INFO  RectangleServiceImpl:138 - Return id!
+2019-05-25 00:00:12 INFO  RectangleServiceImpl:164 - We are in stream map!
+2019-05-25 00:04:58 INFO  RectangleServiceImpl:154 - We are in future methods!
+2019-05-25 00:04:58 INFO  RectangleServiceImpl:138 - Return id!
+2019-05-25 00:04:58 INFO  RectangleServiceImpl:164 - We are in stream map!
+2019-05-25 00:05:44 INFO  RectangleServiceImpl:154 - We are in future methods!
+2019-05-25 00:05:44 INFO  RectangleServiceImpl:138 - Return id!
+2019-05-25 00:05:44 INFO  RectangleServiceImpl:164 - We are in stream map!
+2019-05-25 00:05:44 INFO  RectangleServiceImpl:164 - We are in stream map!
+2019-05-25 00:05:44 INFO  RectangleServiceImpl:164 - We are in stream map!
+2019-05-25 00:09:31 INFO  RectangleServiceImpl:153 - We are in future methods!
+2019-05-25 00:09:31 INFO  RectangleServiceImpl:138 - Return id!
+2019-05-25 00:09:31 INFO  RectangleServiceImpl:163 - We are in stream map!
+2019-05-25 00:09:31 INFO  RectangleServiceImpl:183 - Future method finished!
+2019-05-25 00:09:31 INFO  RectangleServiceImpl:163 - We are in stream map!
+2019-05-25 00:09:31 INFO  RectangleServiceImpl:183 - Future method finished!
+2019-05-25 00:09:31 INFO  RectangleServiceImpl:163 - We are in stream map!
+2019-05-25 00:09:32 INFO  RectangleServiceImpl:183 - Future method finished!
+2019-05-25 00:15:14 INFO  RectangleServiceImpl:147 - We are in future methods!
+2019-05-25 00:15:14 INFO  RectangleServiceImpl:132 - Return id!
+2019-05-25 00:15:14 INFO  RectangleServiceImpl:157 - We are in stream map!
+2019-05-25 00:15:14 INFO  RectangleServiceImpl:177 - Future method finished!
+2019-05-25 00:15:14 INFO  RectangleServiceImpl:157 - We are in stream map!
+2019-05-25 00:15:14 INFO  RectangleServiceImpl:177 - Future method finished!
+2019-05-25 00:15:14 INFO  RectangleServiceImpl:157 - We are in stream map!
+2019-05-25 00:15:14 INFO  RectangleServiceImpl:177 - Future method finished!
+2019-05-25 00:15:33 INFO  RectangleServiceImpl:147 - We are in future methods!
+2019-05-25 00:15:33 INFO  RectangleServiceImpl:132 - Return id!
+2019-05-25 00:15:33 INFO  RectangleServiceImpl:157 - We are in stream map!
+2019-05-25 00:15:33 INFO  RectangleServiceImpl:177 - Future method finished!
+2019-05-25 00:15:33 INFO  RectangleServiceImpl:157 - We are in stream map!
+2019-05-25 00:15:33 INFO  RectangleServiceImpl:177 - Future method finished!
+2019-05-25 00:15:33 INFO  RectangleServiceImpl:157 - We are in stream map!
+2019-05-25 00:15:33 INFO  RectangleServiceImpl:177 - Future method finished!

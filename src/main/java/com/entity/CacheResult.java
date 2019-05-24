@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cache_result")
 public class CacheResult {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -20,6 +21,9 @@ public class CacheResult {
 
     @Column(name = "perimeter")
     private String perimeter;
+
+    @Column(name = "responceid")
+    private int responceId;
 
     public int getId() {
         return id;
@@ -59,6 +63,14 @@ public class CacheResult {
 
     public void setPerimeter(String perimeter) {
         this.perimeter = perimeter;
+    }
+
+    public int getResponceId() {
+        return responceId;
+    }
+
+    public void setResponceId(int responceId) {
+        this.responceId = responceId;
     }
 
     @Override

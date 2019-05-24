@@ -1,15 +1,10 @@
 package com.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
-
 public class Parameters {
 
     private int id;
     private String length;
     private String width;
-    private Rectangle rectangleId;
 
     public Parameters(String length, String width) {
         this.length = length;
@@ -40,13 +35,6 @@ public class Parameters {
         this.width = width;
     }
 
-    public Rectangle getRectangleId() {
-        return rectangleId;
-    }
-
-    public void setRectangleId(Rectangle rectangleId) {
-        this.rectangleId = rectangleId;
-    }
 
     @Override
     public int hashCode() {
@@ -67,5 +55,14 @@ public class Parameters {
         return  (length == guest.length || (length != null && length.equals(guest.getLength())))
                 && (width == guest.width
                 || (width != null && width .equals(guest.getWidth())));
+    }
+
+    @Override
+    public String toString() {
+        return "Parameters{" +
+                "id=" + id +
+                ", length='" + length + '\'' +
+                ", width='" + width + '\'' +
+                '}';
     }
 }
